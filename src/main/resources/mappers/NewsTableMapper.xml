@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.NewsTableMapper">
+  <select id="selectall" parameterType="java.util.Map" resultType="com.demo.entity.NewsTable">
+      select * from newstable limit #{startindex},#{pagesize}
+  </select>
+  
+    <select id="nstatusselectall" parameterType="java.util.Map" resultType="com.demo.entity.NewsTable">
+      select * from newstable where nstatus=#{nstatus} limit #{startindex},#{pagesize}
+  </select>
+  
+  <select id="selectbyid" parameterType="int" resultType="com.demo.entity.NewsTable">
+     select * from newstable where id=#{id}
+  </select>
+  
+  <select id="count" resultType="int">
+  select count(1) from newstable
+  </select>
+  
+  <insert id="addnews" parameterType="com.demo.entity.NewsTable" >
+  insert into newstable values (null,#{nname},#{ftime},#{ncontent},#{yn},
+  #{ntype},#{ntime},#{nstatus})
+  </insert>
+  
+  <delete id="deletenews" parameterType="int">
+  delete from newstable where id=#{id}
+  </delete>
+  
+  <update id="updatenews" parameterType="com.demo.entity.NewsTable">
+  update newstable set nname=#{nname},ftime=#{ftime},ncontent=#{ncontent},
+  yn=#{yn},ntype=#{ntype},ntime=#{ntime},nstatus=#{nstatus} where id=#{id}
+  </update>
+  
+  <update id="shenhenews" parameterType="java.util.Map">
+  update newstable set nstatus=#{nstatus} where id=#{id}
+  </update>
+  
+</mapper>
