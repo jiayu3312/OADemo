@@ -29,8 +29,8 @@ public class NewsTableServiceImp implements NewsTableService {
 	   Page page=new Page(currentpage,pagesize,count);
 	   
 	 Map map=new HashMap<>();
-	 map.put("startindex", page.getStartindex());
-	 map.put("pagesize", page.getPagesize());
+	 map.put("startindex", page.getStartIndex());
+	 map.put("pagesize", page.getPageSize());
 	 
 	 List<NewsTable> list = newsTableMapper.selectall(map);
 	 page.setDataList(list);   
@@ -87,8 +87,11 @@ public class NewsTableServiceImp implements NewsTableService {
 	   Page page=new Page(currentpage,pagesize,count);
 	   
 	 Map map=new HashMap<>();
-	 map.put("startindex", page.getStartindex());
-	 map.put("pagesize", page.getPagesize());
+	 map.put("startindex", page.getStartIndex());
+	 map.put("pagesize", page.getPageSize());
+	 map.put("startindex", page.getStartIndex());
+	 map.put("pagesize", page.getPageSize());
+	 map.put("nstatus", 1);
 	 
 	 List<NewsTable> list = newsTableMapper.fbggselectall(map);
 	 page.setDataList(list);   
@@ -108,8 +111,8 @@ public class NewsTableServiceImp implements NewsTableService {
 	   Page page=new Page(currentpage,pagesize,count);
 	   
 	 Map map=new HashMap<>();
-	 map.put("startindex", page.getStartindex());
-	 map.put("pagesize", page.getPagesize());
+	 map.put("startindex", page.getStartIndex());
+	 map.put("pagesize", page.getPageSize());
 	 List<NewsTable> list = newsTableMapper.tjshselectall(map);
 	 page.setDataList(list);   
 		
@@ -127,8 +130,8 @@ public class NewsTableServiceImp implements NewsTableService {
 	   Page page=new Page(currentpage,pagesize,count);
 	   
 	 Map map=new HashMap<>();
-	 map.put("startindex", page.getStartindex());
-	 map.put("pagesize", page.getPagesize());
+	 map.put("startindex", page.getStartIndex());
+	 map.put("pagesize", page.getPageSize());
 	 List<NewsTable> list = newsTableMapper.shtgselectall(map);
 	 page.setDataList(list);   
 		
@@ -146,8 +149,8 @@ public class NewsTableServiceImp implements NewsTableService {
 	   Page page=new Page(currentpage,pagesize,count);
 	   
 	 Map map=new HashMap<>();
-	 map.put("startindex", page.getStartindex());
-	 map.put("pagesize", page.getPagesize());
+	 map.put("startindex", page.getStartIndex());
+	 map.put("pagesize", page.getPageSize());
 	 List<NewsTable> list = newsTableMapper.shsbselectall(map);
 	 page.setDataList(list);   
 		
