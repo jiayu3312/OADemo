@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -92,16 +91,19 @@ public class StudyMaterialController {
 	}
 	
 	//新增
+	@RequestMapping("/insertStudyMaterial")
 	public int insertStudyMaterial(StudyMaterial studyMaterial){
 		return studyMaterialService.insertStudyMaterial(studyMaterial);
 	}
 	
 	//删除
+	@RequestMapping("/deleteStudyMaterial")
 	public int deleteStudyMaterial(String id){
 		return studyMaterialService.deleteStudyMaterial(id);
 	}
 	
 	//修改
+	@RequestMapping("/updateStudyMaterial")
 	public int updateStudyMaterial(StudyMaterial studyMaterial){
 		return studyMaterialService.updateStudyMaterial(studyMaterial);
 	}
