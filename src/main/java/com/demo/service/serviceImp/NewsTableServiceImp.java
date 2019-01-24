@@ -19,12 +19,10 @@ public class NewsTableServiceImp implements NewsTableService {
 	private NewsTableMapper newsTableMapper;
 
 	@Override
-	public Page<NewsTable> selectall(int currentpage) {
+	public Page<NewsTable> selectall(int currentpage,int pagesize) {
 		if(currentpage<=0) {
 			currentpage=1;
-		}
-		
-	 int   pagesize=2;
+		}	
 	   
 	   int count=newsTableMapper.count();
 	   
@@ -79,12 +77,10 @@ public class NewsTableServiceImp implements NewsTableService {
 	}
 
 	@Override
-	public Page<NewsTable> bcxwselectall(int currentpage,int nstatus) {
+	public Page<NewsTable> fbggselectall(int currentpage,int pagesize) {
 		if(currentpage<=0) {
 			currentpage=1;
 		}
-		
-	 int   pagesize=2;
 	   
 	   int count=newsTableMapper.count();
 	   
@@ -93,21 +89,19 @@ public class NewsTableServiceImp implements NewsTableService {
 	 Map map=new HashMap<>();
 	 map.put("startindex", page.getStartindex());
 	 map.put("pagesize", page.getPagesize());
-	 map.put("nstatus", 1);
 	 
-	 List<NewsTable> list = newsTableMapper.selectall(map);
+	 List<NewsTable> list = newsTableMapper.fbggselectall(map);
 	 page.setDataList(list);   
 		
 		return page ;
 	}
 
 	@Override
-	public Page<NewsTable> tjshselectall(int currentpage,int nstatus) {
+	public Page<NewsTable> tjshselectall(int currentpage,int pagesize) {
 		if(currentpage<=0) {
 			currentpage=1;
 		}
 		
-	 int   pagesize=2;
 	   
 	   int count=newsTableMapper.count();
 	   
@@ -116,20 +110,17 @@ public class NewsTableServiceImp implements NewsTableService {
 	 Map map=new HashMap<>();
 	 map.put("startindex", page.getStartindex());
 	 map.put("pagesize", page.getPagesize());
-	 map.put("nstatus", 2);
-	 List<NewsTable> list = newsTableMapper.nstatusselectall(map);
+	 List<NewsTable> list = newsTableMapper.tjshselectall(map);
 	 page.setDataList(list);   
 		
 		return page ;
 	}
 
 	@Override
-	public Page<NewsTable> shtgselectall(int currentpage,int nstatus) {
+	public Page<NewsTable> shtgselectall(int currentpage,int pagesize) {
 		if(currentpage<=0) {
 			currentpage=1;
 		}
-		
-	 int   pagesize=2;
 	   
 	   int count=newsTableMapper.count();
 	   
@@ -138,20 +129,17 @@ public class NewsTableServiceImp implements NewsTableService {
 	 Map map=new HashMap<>();
 	 map.put("startindex", page.getStartindex());
 	 map.put("pagesize", page.getPagesize());
-	 map.put("nstatus", 3);
-	 List<NewsTable> list = newsTableMapper.nstatusselectall(map);
+	 List<NewsTable> list = newsTableMapper.shtgselectall(map);
 	 page.setDataList(list);   
 		
 		return page ;
 	}
 
 	@Override
-	public Page<NewsTable> shsbselectall(int currentpage,int nstatus) {
+	public Page<NewsTable> shsbselectall(int currentpage,int pagesize) {
 		if(currentpage<=0) {
 			currentpage=1;
 		}
-		
-	 int   pagesize=2;
 	   
 	   int count=newsTableMapper.count();
 	   
@@ -160,11 +148,16 @@ public class NewsTableServiceImp implements NewsTableService {
 	 Map map=new HashMap<>();
 	 map.put("startindex", page.getStartindex());
 	 map.put("pagesize", page.getPagesize());
-	 map.put("nstatus", 4);
-	 List<NewsTable> list = newsTableMapper.nstatusselectall(map);
+	 List<NewsTable> list = newsTableMapper.shsbselectall(map);
 	 page.setDataList(list);   
 		
 		return page ;
+	}
+
+	@Override
+	public int czidshenhenews(int id) {
+		// TODO Auto-generated method stub
+		return newsTableMapper.czidshenhenews(id);
 	}
 
 }

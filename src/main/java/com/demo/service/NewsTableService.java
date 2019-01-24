@@ -8,15 +8,15 @@ import com.demo.utils.Page;
 
 public interface NewsTableService {
 
-	public Page<NewsTable> selectall(int currentpage);
+	public Page<NewsTable> selectall(int currentpage,int pagesize);
 	
-	public Page<NewsTable> bcxwselectall(int currentpage,int nstatus);
+	public Page<NewsTable> fbggselectall(int currentpage,int pagesize);
 
-	public Page<NewsTable> tjshselectall(int currentpage,int nstatus);
+	public Page<NewsTable> tjshselectall(int currentpage,int pagesize);
 
-	public Page<NewsTable> shtgselectall(int currentpage,int nstatus);
+	public Page<NewsTable> shtgselectall(int currentpage,int pagesize);
 
-	public Page<NewsTable> shsbselectall(int currentpage,int nstatus);
+	public Page<NewsTable> shsbselectall(int currentpage,int pagesize);
 	
 	public int count();
 
@@ -29,6 +29,8 @@ public interface NewsTableService {
 	public int updatenews(NewsTable newsTable);
 
 	public int shenhenews(Map map);
+
+	public int czidshenhenews(int id);
 
 
 

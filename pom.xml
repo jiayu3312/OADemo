@@ -11,6 +11,8 @@
 	<groupId>com</groupId>
 	<artifactId>oa_demo</artifactId>
 	<version>1.0</version>
+	<packaging>war</packaging>
+	
 	<name>oa_demo</name>
 	<description>Demo project for Spring Boot</description>
 

@@ -22,11 +22,10 @@ public class NewsTableController {
   private	NewsTableService newsTableService;
 	
 	@GetMapping("/selectall")
-	public Object selectall(@RequestParam(defaultValue="1")int currentpage) {
+	public Object selectall(@RequestParam(defaultValue="1")int currentpage,@RequestParam(defaultValue="2")int pagesize) {
 		
-		Page<NewsTable> page = newsTableService.selectall(currentpage);
+		Page<NewsTable> page = newsTableService.selectall(currentpage,pagesize);
 		
-//		model.addAttribute("newstable", selectall);
 		
 		return page;
 		
@@ -35,9 +34,33 @@ public class NewsTableController {
 	
 	@ResponseBody
 	@GetMapping("/shtgselectall")
-	public Page<NewsTable> shtgselectall(@RequestParam(defaultValue="1")int currentpage,@RequestParam(defaultValue="3")int nstatus) {
+	public Page<NewsTable> shtgselectall(@RequestParam(defaultValue="1")int currentpage,@RequestParam(defaultValue="2")int pagesize) {
 		
-		Page<NewsTable> page = newsTableService.shtgselectall(currentpage, nstatus);
+		Page<NewsTable> page = newsTableService.shtgselectall(currentpage, pagesize);
+		
+		return page;		
+	
+}
+	@GetMapping("/shsbselectall")
+	public Page<NewsTable> shsbselectall(@RequestParam(defaultValue="1")int currentpage,@RequestParam(defaultValue="2")int pagesize) {
+		
+		Page<NewsTable> page = newsTableService.shsbselectall(currentpage, pagesize);
+		
+		return page;		
+	
+}
+	@GetMapping("/fbggselectall")
+	public Page<NewsTable> fbggselectall(@RequestParam(defaultValue="1")int currentpage,@RequestParam(defaultValue="2")int pagesize) {
+		
+		Page<NewsTable> page = newsTableService.fbggselectall(currentpage, pagesize);
+		
+		return page;		
+	
+}
+	@GetMapping("/tjshselectall")
+	public Page<NewsTable> tjshselectall(@RequestParam(defaultValue="1")int currentpage,@RequestParam(defaultValue="2")int pagesize) {
+		
+		Page<NewsTable> page = newsTableService.tjshselectall(currentpage, pagesize);
 		
 		return page;		
 	
@@ -45,35 +68,51 @@ public class NewsTableController {
 	@GetMapping("/addnews")
 	public String addnews(NewsTable newsTable) {
 		
-		newsTableService.addnews(newsTable);
-		
-		return "2";		
+		int addnews = newsTableService.addnews(newsTable);
+		if(addnews!=0) {
+			return "添加成功";		
+		}else {
+			return "添加失败";	
+		}
 	
 }
 	@GetMapping("/deletenews")
 	public String deletenews(int id) {
 		
-		newsTableService.deletenews(id);
+		int deletenews = newsTableService.deletenews(id);
+		if(deletenews!=0) {
+			return "删除成功";		
+		}else {
+			return "删除失败";	
+		}
 		
-		return "2";		
+		
 	
 }
 	
 	
 	@GetMapping("/shenhenews")
-	public String shenhenews(int id,int nstatus) {
-		Map map=new HashMap<>();
-		map.put("id", id);
-		map.put("nstatus", nstatus);
+	public String shenhenews(int id) {
 		
-		if(nstatus==3) {
-			newsTableService.shenhenews(map);
-			return "审核通过";
-			
+		int nstatus = newsTableService.czidshenhenews(id);
+		 
+		Map map=new HashMap<>();	
+		map.put("id", id);
+		if(nstatus==2) {
+			boolean is;//审核通过或者拒绝
+			if(is=true) {
+				map.put("nstatus", 3);
+				int shstatus = newsTableService.shenhenews(map);	
+				return "审核通过";
+			}else{
+				map.put("nstatus", 4);
+				int shstatus = newsTableService.shenhenews(map);	
+				return "审核不通过";
+			}
 		}else {
-			newsTableService.shenhenews(map);
-			return "审核不通过";
-		}
+			return "该新闻不是待审核状态不能审核！";
+		}		
+		
 					
 	}
 	
@@ -81,17 +120,23 @@ public class NewsTableController {
 	@GetMapping("/updatenews")
 	public String updatenews(NewsTable newsTable) {
 		
-		newsTableService.updatenews(newsTable);
+		int updatenews = newsTableService.updatenews(newsTable);
+		if(updatenews!=0) {
+			Map map=new HashMap<>();
+			map.put("id", newsTable.getId());
+			map.put("nstatus", 2);
+			int shenhenews = newsTableService.shenhenews(map);
+		}
 		
-		return "2";		
+		return "修改成功，变为提交审核状态";		
 	
 }
 	@GetMapping("/selectbyidnews")
-	public String selectbyidnews(int id) {
+	public NewsTable selectbyidnews(int id) {
 		
 		NewsTable newstable = newsTableService.selectbyid(id);
 		
-		return "2";		
+		return newstable;		
 	
 }
 	

@@ -13,13 +13,33 @@
      select * from newstable where id=#{id}
   </select>
   
+  <select id="czidshenhenews" parameterType="int" resultType="int">
+     select nstatus from newstable where id=#{id}
+  </select>
+  
+   <select id="fbggselectall" parameterType="java.util.Map" resultType="com.demo.entity.NewsTable">
+      select * from newstable limit #{startindex},#{pagesize} where nstatus=1
+  </select>
+  
+  <select id="tjshselectall" parameterType="java.util.Map" resultType="com.demo.entity.NewsTable">
+      select * from newstable limit #{startindex},#{pagesize} where nstatus=2
+  </select>
+  
+  <select id="shtgselectall" parameterType="java.util.Map" resultType="com.demo.entity.NewsTable">
+      select * from newstable limit #{startindex},#{pagesize} where nstatus=3
+  </select>
+  
+  <select id="shsbselectall" parameterType="java.util.Map" resultType="com.demo.entity.NewsTable">
+      select * from newstable limit #{startindex},#{pagesize} where nstatus=4
+  </select>
+  
   <select id="count" resultType="int">
   select count(1) from newstable
   </select>
   
   <insert id="addnews" parameterType="com.demo.entity.NewsTable" >
   insert into newstable values (null,#{nname},#{ftime},#{ncontent},#{yn},
-  #{ntype},#{ntime},#{nstatus})
+  #{ntype},#{ntime},1)
   </insert>
   
   <delete id="deletenews" parameterType="int">

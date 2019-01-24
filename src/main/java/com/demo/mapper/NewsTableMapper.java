@@ -12,6 +12,14 @@ public interface NewsTableMapper {
 
 public List<NewsTable> selectall(Map map);
 
+public List<NewsTable> fbggselectall(Map map);
+
+public List<NewsTable> tjshselectall(Map map);
+
+public List<NewsTable> shtgselectall(Map map);
+
+public List<NewsTable> shsbselectall(Map map);
+
 public List<NewsTable> nstatusselectall(Map map);
 
 public int count();
@@ -25,5 +33,7 @@ public int deletenews(int id);
 public int updatenews(NewsTable newsTable);
 
 public int shenhenews(Map map);
+
+public int czidshenhenews(int id);
 
 }
