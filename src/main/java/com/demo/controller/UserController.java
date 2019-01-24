@@ -1,7 +1,5 @@
 package com.demo.controller;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,12 +36,12 @@ public class UserController {
 		if (user2 == null) {
 			// 登录失败--请求转发
 			model.addAttribute("fail", "用户名或密码错误");
-//			return "forward:login.jsp";
+//			return "forward:login.jsp";	//登录失败，返回登录界面
 			return "用户名或密码错误";	//用于测试
 		} else {
 			// 4.登录成功--响应重定向
 			model.addAttribute("success", user);
-//			return "index";
+//			return "index";	//登录成功，进入主页
 			return "恭喜您，登录成功！";	//用于测试
 		}
 	}
